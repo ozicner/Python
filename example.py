@@ -1,16 +1,16 @@
-# 2 <= n <= 90    # 여름 일수
-# 1 <= t <= n-1   # 스타후르츠 재배 소요 일수
-# 1 <= c <= 300    # 화분 칸수
-# 1 <= p <= 1000   # 단가
+2 <= n <= 90    # 여름 일수
+1 <= t <= n-1   # 스타후르츠 재배 소요 일수
+1 <= c <= 300    # 화분 칸수
+1 <= p <= 1000   # 단가
 
-# n,t,c,p=map(int,input().split())
+n,t,c,p=map(int,input().split())
 
-# n = int(input())
-# t = int(input())
-# c = int(input())
-# p = int(input())
+n = int(input())
+t = int(input())
+c = int(input())
+p = int(input())
 
-# print((n-1) // t * c * p)
+print((n-1) // t * c * p)
 
 
 
