@@ -1043,46 +1043,48 @@
 # t2.cry()
 #
 # ex) 74 exception 예외 처리 // 다시해봐야함
-# a = 4/0 # ZeroDivisionError: division by zero // 제로 에러
-# print(1)
-#
-# try: a = 4/0 # 예외처리
+# try:
+#     print(0)
+#     a = 4//0 # ZeroDivisionError Exception
 # except:
-#     print(2)
-#
-# try: a = 4/0
-# except exception as e
+#     print('예외가 발생하였습니다.')
+# finally:
+#     print('finally')
 # print(2)
-#
-# try: a = 4/0
-# except: finally
-# print(3)
-# 
+# Exception 내용이 궁금할 때.
+# e.printStackTrace();  ==  except Exception as e: print(e)
+# try:
+#     print(0)
+#     a = 4//0 # ZeroDivisionError Exception
+# except Exception as e: # Exception 내용이 궁금할때.
+#     print(e)
+# print(2)
+# try:
+#     print(0)
+#     a = 4//0 # ZeroDivisionError Exception
+# except Exception as e: # Exception 내용이 궁금할때.
+#     print(e)
+# finally:
+#     print(9)
+# print(2)
 # a = [10, 20, 30]
-# b = a[30]
+# b = a.index(30)
 # print(b)
-# 
-# try: except: exception as e
-#     c = 100
-# print(c)
+# try:
+#     c = a.index(100)
+# except Exception as e:
+#     print(e)
+#     print('Index를 찾지 못했습니다.')
+# print('본 프로그램은 정상 진행')
 #
 # ex) 75 파일 입출력, hdd에 파일 생성 및 리딩
-file = open('sample.txt', 'w', encoding='utf-8')
-file.write('호랑이')
-file.write('사자')
-file.write('고양이')
-file.close()  # 두줄은 한쌍이며 이 사이에 내용 들어감, 생성되면 좌측 라이브러리에 확인
-
-
-
-
-
-
-
+# file = open('sample.txt', 'w', encoding='utf-8')
+# file.write('호랑이')
+# file.write('사자')
+# file.write('고양이')
+# file.close()  # 두줄은 한쌍이며 이 사이에 내용 들어감, 생성되면 좌측 라이브러리에 확인
+#
 # ex) 76
-
-
-
 
 
 
