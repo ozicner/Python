@@ -198,7 +198,7 @@
 # print(s.upper()) # 모두 대문자로 변경
 # print(s.replace('Banana', 'Orange')) # 바나나를 오렌지로 치환
 # print(s.replace('banana', 'ORANGE'))
-#
+# #
 # ex) 30 문자열 쪼개기 -> 결과 : ['무궁화', '꽃이', '피었습니다'] -> 리스트(배열)프레임을 통해 결과 3개를 줌
 # s = '무궁화 꽃이 피었습니다'
 # print(s.split())
@@ -844,125 +844,242 @@
 #
 # a = Apple()  # 생성자 생성
 #
+#
+# ex) 69 class, 함수
+# class Apple:
+#     def __init__(self):
+#         pass
+#     def func01(self):
+#         print("func01 호출")
+#         print(1)
+# a = Apple()
+# a.func01()
+#
+# class 04번
+# class Apple:
+#     def __init__(self):
+#         pass
+#     def func02(self, a):
+#         print("func02 호출")
+#         print(a*a)
+# a = Apple()
+# a.func02(10)
+#
+#
+# class 05번
+# class Apple:
+#     def __init__(self):
+#         pass
+#     def func03(self):
+#         print("func03 호출")
+#         return 100
+# a = Apple()
+# a.func03()              # 호출방법01 -> return값 없이
+# print(a.func03())       # 호출방법02 -> return 값이랑 같이
+# result = a.func03()     # 호출방법03 -> return 값이랑 같이
+# print(result)
+#
+#
+# class 06번
+# class Apple:
+#     def __init__(self):
+#         pass
+#     def func04(self, a):    # self 꼭 넣어줘야 함 (변수입력은 따로 안해줘도 됨)
+#         print("func04 호출")
+#         return 100+a
+# a = Apple()
+# a.func04(50)            # 호출방법01 -> return값 없이
+# print(a.func04(50))     # 호출방법02 -> return 값이랑 같이
+# result = a.func04(50)   # 호출방법03 -> return 값이랑 같이
+# print(result)
+#
+#
+# class Apple:
+#     def __init__(self):
+#         print(id(self))
+#         pass
+#
+#
+# a = Apple()
+# print(id(a))
+#
+#
+# ex) 69 필드
+# Field
+# class Apple:
+#     num = 10
+#
+#     def __init__(self):
+#         pass
+#
+# a = Apple()
+# print(a.num)
+#
+# Field 자동 생성
+# class Apple:
+#
+#     def __init__(self, num):
+#         self.num = num    # 필드 선언 안해도 필드 자동 생성 : 동적
+#
+#     def func(self, num):    # 필드 선언을 안했기에 바로 num 을 사용 할 수 없다.
+#         print(num)
+#
+# a = Apple(20)
+# print(a.num)
+# a.func(30)
+# 동적(Dynamic) : 필요할 때 만들어 쓰는 것
+# 정적(Static : 처음부터 만들어져 있는 것
+#
+# class Apple:
+#     a1 = 10
+#     def __init__(self, a2):
+#         self.a2 = a2
+#     def f1(self):
+#         a3 = 30
+#         print(self.a1, self.a2, a3)
+# a = Apple(20)
+# a.f1()
+#
+# ex) 70 상속
+# class Apple:
+#     def __init__(self):
+#         pass
+#     def func01(self):
+#         print(1)
+#     def func03(self):
+#         print("부모3")
+#
+# class Orange(Apple):
+#     def __init__(self):
+#         pass
+#     def func02(self):
+#         print(self.func01())
+#     def func03(self):
+#         print("자식3")
+#     def func04(self):
+#         print(self.func02())
+#     def func05(self):
+#         super().func03()  # 부모 호출
+#
+# a = Orange()
+# a.func03()
+# a.func04()
+# a.func05()
+#
+# print(Orange.mro()) # 해당 클래스의 상속관계, 속성 확인
+#
+# a1 = Apple() # 상속은 있지만 업캐스팅의 개념이 없음. 변수 타입 자체가 확인이 불가하기때문에
+# 
+# ex) 71 업캐스팅, for 활용
+# class Dog():
+#     def __init__(self):
+#         pass
+#     def cry(self):
+#         print("멍멍")
+#
+# class Cat():
+#     def __init__(self):
+#         pass
+#     def cry(self):
+#         print("야옹")
+#
+# class Tiger():
+#     def __init__(self):
+#         pass
+#     def cry(self):
+#         print("어흥")
+#
+# a1 = Dog()
+# a2 = Cat()
+# a3 = Tiger()
+#
+# a1.cry()
+# a2.cry()
+# a3.cry()
+#
+# print()
+#
+# a4 = [Dog(), Cat(), Tiger()]
+#
+# for animal in(a4):
+#     animal.cry()
+#
+# ex) 72 함수, 대입연산으로 객체와 주고 받기
+# class Apple:
+#     def func01(self):
+#         print(1)
+#         pass
+#
+# def func02(a):
+#      print(2)
+#      a.func01()
+#
+#
+# func02(Apple())
+#
+# ex) 73 다형성,
+# class Zoo():
+#     def __init__(self,animal):
+#         self.animal = animal
+#
+#     def cry(self):
+#         self.animal.cry()
+#
+#
+# class Dog():
+#     def cry(self):
+#         print('멍멍')
+#
+#
+# class Cat():
+#     def cry(self):
+#         print('야옹')
+#
+#
+# t1 = Zoo(Dog())
+# t2 = Zoo(Cat())
+#
+# t1.cry()
+# t2.cry()
+#
+# ex) 74 exception 예외 처리 // 다시해봐야함
+# a = 4/0 # ZeroDivisionError: division by zero // 제로 에러
+# print(1)
+#
+# try: a = 4/0 # 예외처리
+# except:
+#     print(2)
+#
+# try: a = 4/0
+# except exception as e
+# print(2)
+#
+# try: a = 4/0
+# except: finally
+# print(3)
+# 
+# a = [10, 20, 30]
+# b = a[30]
+# print(b)
+# 
+# try: except: exception as e
+#     c = 100
+# print(c)
+#
+# ex) 75 파일 입출력, hdd에 파일 생성 및 리딩
+file = open('sample.txt', 'w', encoding='utf-8')
+file.write('호랑이')
+file.write('사자')
+file.write('고양이')
+file.close()  # 두줄은 한쌍이며 이 사이에 내용 들어감, 생성되면 좌측 라이브러리에 확인
 
-ex) 69 class, 함수
-class Apple:
-    def __init__(self):
-        pass
-    def func01(self):
-        print("func01 호출")
-        print(1)
-a = Apple()
-a.func01()
-
-class 04번
-class Apple:
-    def __init__(self):
-        pass
-    def func02(self, a):
-        print("func02 호출")
-        print(a*a)
-a = Apple()
-a.func02(10)
-
-
-class 05번
-class Apple:
-    def __init__(self):
-        pass
-    def func03(self):
-        print("func03 호출")
-        return 100
-a = Apple()
-a.func03()              # 호출방법01 -> return값 없이
-print(a.func03())       # 호출방법02 -> return 값이랑 같이
-result = a.func03()     # 호출방법03 -> return 값이랑 같이
-print(result)
-
-
-class 06번
-class Apple:
-    def __init__(self):
-        pass
-    def func04(self, a):    # self 꼭 넣어줘야 함 (변수입력은 따로 안해줘도 됨)
-        print("func04 호출")
-        return 100+a
-a = Apple()
-a.func04(50)            # 호출방법01 -> return값 없이
-print(a.func04(50))     # 호출방법02 -> return 값이랑 같이
-result = a.func04(50)   # 호출방법03 -> return 값이랑 같이
-print(result)
-
-
-class Apple:
-    def __init__(self):
-        print(id(self))
-        pass
-
-
-a = Apple()
-print(id(a))
-
-
-ex) 69 필드
-Field
-class Apple:
-    num = 10
-
-    def __init__(self):
-        pass
-
-a = Apple()
-print(a.num)
-
-Field 자동 생성
-class Apple:
-
-    def __init__(self, num):
-        self.num = num    # 필드 선언 안해도 필드 자동 생성 : 동적
-
-    def func(self, num):    # 필드 선언을 안했기에 바로 num 을 사용 할 수 없다.
-        print(num)
-
-a = Apple(20)
-print(a.num)
-a.func(30)
-동적(Dynamic) : 필요할 때 만들어 쓰는 것
-정적(Static : 처음부터 만들어져 있는 것
-
-class Apple:
-    a1 = 10
-    def __init__(self, a2):
-        self.a2 = a2
-    def f1(self):
-        a3 = 30
-        print(self.a1, self.a2, a3)
-a = Apple(20)
-a.f1()
-
-# ex) 70
 
 
 
 
 
 
-
-# ex) 71
-
-
-
-
-
-
-# ex) 72
-
-
-
-
-
-
-# ex) 73
+# ex) 76
 
 
 
@@ -971,15 +1088,7 @@ a.f1()
 
 
 
-
-
-
-
-
-
-
-
-
+# ex) 77
 
 
 
