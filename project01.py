@@ -1081,16 +1081,331 @@
 # file = open('sample.txt', 'w', encoding='utf-8')
 # file.write('호랑이')
 # file.write('사자')
-# file.write('고양이')
 # file.close()  # 두줄은 한쌍이며 이 사이에 내용 들어감, 생성되면 좌측 라이브러리에 확인
 #
 # ex) 76
+# for i in range(5):
+#     print(i)
+#
+# for i in range(2,7): # 2~7까지 출력
+#     print(i)
+#
+# for i in range(1,10,2): # 스탭 2
+#     print(i)
+#
+# file = open('sample.txt', 'w', encoding='utf-8') # for문 반복 활용 파일 내용 작성 가능
+# for i in range(5):
+#     file.write('호랑이 ')
+# file.close()
+#
+# file = open('sample.txt', 'w', encoding='utf-8')
+# for i in range(5):
+#     file.write(str(i)) # 문자열을 숫자열로 변환하여 반복 출력
+# file.close()
+#
+# file = open('sample.txt', 'w', encoding='utf-8')
+# for i in range(5):
+#     file.write('호랑이'+str(i)+'\n') # 호랑이0~4 출력 하면서 줄바꿈
+# file.close()
+#
+# with open ('sample.txt', 'w', encoding='utf-8') as file:  # with ~ as, close를 생략하는 파일생성 문법
+#     for i in range(5):
+#         file.write('호랑이'+str(i)+'\n')
+#
+# ex) 77 파일 리딩
+# file = open('sample.txt', 'r', encoding='utf-8') # r 로 리딩 /
+# data = file.readline() # 파일 리드라인 함수로 읽을 준비하고 변수줘서 아래 출력
+# print(data)
+#
+# if data:
+#     print(10)
+#
+# data = file.readline()
+# print(data)
+#
+# if data:
+#     print(20)
+#
+# file.close()
+#
+# file = open('sample1.txt', 'r', encoding='utf-8')
+# while True:
+#     data = file.readline()
+#     print(data)
+#     if not data:
+#         break
+# file.close()
+#
+# ex) 78 데이터를 리스트로 출력 후 포인 문장으로 분리하고 줄바꿈 제거
+# file = open('sample1.txt', 'r', encoding='utf-8')
+# data = file.readlines()
+# print(data)
+# file.close()
+#
+# for i in data:
+#     print(i, end='')
+#
+# a = ['호랑이1\n', '호랑이2\n', '호랑이3\n', '호랑이4\n', '\n']
+# a[0] = a[0].replace('\n','') # 리스트 0번의 줄바꿈을 삭제
+# for i in a:
+#     print(i)
+#
+# for i in range(0, len(a)):
+#     a[i] = a[i].replace('\n','')
+# print(a)
+#
+# a = ['호랑이1\n', '호랑이2\n', '호랑이3\n', '호랑이4\n', '\n']
+# print(a)
+# a[0] = a[0].replace('\n','')
+# for i in a:
+#     print(i)
+#
+# for index, value in enumerate(a): # 데이터 뽑고 인덱스 갯수 출력
+#     print(index, value)
+#
+# a[0] = value.replace('\n','')
+# print(a)
+#
+# file = open('sample1.txt', 'r', encoding='utf-8')
+# data = file.read()
+# file.close()
+# print(data)
+#
+# ex) 79 import, 파일 땡겨오기
+# import Tiger #방법1. 해당 함수를 임포트
+# Tiger.f1()
+#
+# from Tiger import * #방법2. 파일명으로 임포트
+# Tiger.f1()
+#
+# import Tiger as t # 방법3. 별칭으로 임포트
+# t.f1()
+#
+# import A as B # A를 B라고 사용하겠다. A의 파일명이나 소스가 길면 B로 간략히
+#
+# ex) 80 main 확인
+# print(__name__) # 알트 + 시프트 + f10 메인 변경
+#
+# import Tiger as t
+# t.f2() # Tiger를 메인으로 설정하면 타이거의 함수를 임포트 해도 파일명으로 출력
+#
+# if __name__ == '__main__':
+#     print(1)
+#
+# import Tiger as t
+# if __name__ == '__main__':
+#     print('f1')
+#
+# t.f2()  # 메인
+#
+#
+# def main():
+#     print(1)
+#
+# if __name__ == '__main__':
+#     main()
+#
+# ex) 81 딕셔너리, 제이슨 형식 잊지말기
+# apple = {'n1':'호랑이', 'n2':'코끼리', 'n3':'독수리'}
+# print(apple['n2'])
+#
+# orange = {10:20, 20:'독수리', 30:True}
+# print(orange[10], orange[20], orange[30])
+#
+# kiwi = {
+#     '이름':'홍길동',
+#     '나이':20,
+#     '특기':['독서', '무술', '프로그래밍'],
+#     '가족':{'아버지':'아빠', '어머니':'엄마'}
+# }
+# print(kiwi['이름'], kiwi['나이'])
+# print(kiwi['특기'], kiwi['특기'][0]) # 리스트 중복
+# print(kiwi['가족'], ['어머니'])
+#
+# data = {
+#     "response":
+#         {"body":
+#              {"items":
+#                   [{"addr":1234,"name":"홍길동"},"득템"]},
+#          "page":100},
+#     "header":{"result":200,"msg":"OK"}}
+#
+# print(data["response"])
+# print(data["response"], data["header"])
+# print(data["response"], ["body"])
+# print(data["response"], ["body"], ["items"])
+#
+# apple = {'n1':'호랑이', 'n2':'코끼리', 'n3':'독수리'}
+# print(apple['n1'])
+# print(apple.get('n1'))
+# try:
+#     apple['n4'] # 익셉션 발생
+# finally:
+#     pass
+#     print('n3')
+#
+# num = apple.get('n4') # 익셉션 노 발생
+# print(num)
+# if None == num:
+#     print(nnnnnn)
+#
+# ex) 82 sum
+# a = [10, 20, 30, 40]
+# print(sum(a))   # a의 인수 합
+# # print(sum(a[1]))
+# a = sum([3,4,5,6])
+#
+# ex) 83
+# def f1(a):
+#     return a > 0
+# print(filter(f1, [-2,-1,0,1,2]))
+# print(list(filter(f1, (-2,-1,0,1,2))))
+#
+# def f1():
+#     print(1)
+# f1()
+# a = f1 # 함수1번을 a로 참조
+# a() # a가 함수1을 참조하면서 호출하여 f1() 과 동일
+#
+# def f2():
+#     print(2)
+# f2()
+#
+# def f3(tt):
+#     tt()
+#     print(3)
+# f3(f2)
+#
+# def f4():
+#     return 999
+#
+# def f5(tt):
+#     print(tt)
+# f5(999)  # 단순히 함수5번을 콜하면서 tt인수에 999를 받아서 출력
+# f5(f4()) # 함수5번을 콜했지만 인수가 함수4번을 호출하면서 함수 4번의 리턴값인 999를 출력
+#
+# ex) 84 파이썬에 없는 switch의 대안
+# def f1(num):
+#     t = {10:'호랑이', 20:'독수리', 30:'앵무새'}
+#     return t[num]
+# print(f1(10))
+#
+# a = [10, 20, 30]
+# print(a*2) # 리스트를 두번 출력, 한묶음
+#
+# ex) 85 컴프리헨션, 반복문과 조건문을 이용한 list를 생성하는것
+# a = [i for i in range(5)]
+# print(a)
+#
+# a = [i*3 for i in range(5)] # for문의 실행문장을 for문 앞으로 빼는것
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# b = [i*5 for i in a] # a의 리스트 들에 5씩 곱해서 출력
+# print(b)
+#
+# a = [10, 20, 30, 40]
+# b = [i + 2 for i in a if i > 25]
+# print(b)
+#
+# print(dir({})) # 딕셔너리 관련 함수 목록을 보여줌
+# print(dir([])) # 리스트 관련 함수 목록을 보여줌
+# print(dir(())) # 튜플 관련 함수 목록을 보여줌
+#
+# ex) 86 복습
+# a = [10, 20, 30, 40]
+# a.insert(3, 99)  # 리스트 지정위치에 데이터 삽입
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# a.append('호랑이')
+# a.append(100) # 리스트 맨뒤에 데이터 삽입
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# a.insert(len(a), 99) # 어펜드와 동일하지만 맨끝에 넣고싶을떄
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# a += [50, 60]   # 위와 동일
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# a.extend([50, 60])   # 위와 동일
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# b = a  # 동일 객체 참조
+# c = a.copy()  # 새로운 객체를 복사
+# print(a, b, c) # 결과는 동일
+# print(id(a), id(b), id(c))
+#
+# a[0] = 99
+# print(a[0], b[0], c[0]) # 위 결과 재 확인
+#
+# a = [10, 20, 30, 40]
+# a.clear() # 리스트 삭제 청소, 종종 쓰임
+# print(a)
+#
+# a = [10, 20, 30, 40, 10]
+# a.remove(10) # 만약 검색 실패시 인셉션 발생하고 중복된 데이터는 첫 데이터만 제거
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# print(a[2])
+# del(a[2]) # 지정 인덱스 삭제
+# print(a)
+#
+# a = [10, 20, 30, 40]
+# b = a.pop(2) # 지정 인덱스 추출해서 삭제
+# print(b)
+# print(a)
+#
+# 뭐만 뽑겟다, 뭐만 빼고 뭘 뽑겟다 등 조건은 필터다
+# a에서 6을 제외하고 출력
+def f1(b):
+    return b != 6
+
+a = [0, 3, 6, 9, 0, 3, 6, 9]
+print(list(filter(f1, a)))
+
+
+# 1 ~ 1000 중에서 4의 배수는 몇개 인가
+def f2(num):
+    return num < 1000+1
+
+
+
+
+# ex) 87
 
 
 
 
 
-# ex) 77
+
+
+# ex) 88
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
