@@ -1363,50 +1363,139 @@
 #
 # 뭐만 뽑겟다, 뭐만 빼고 뭘 뽑겟다 등 조건은 필터다
 # a에서 6을 제외하고 출력
-def f1(b):
-    return b != 6
-
-a = [0, 3, 6, 9, 0, 3, 6, 9]
-print(list(filter(f1, a)))
-
-
-# 1 ~ 1000 중에서 4의 배수는 몇개 인가
-def f2(num):
-    return num < 1000+1
-
-
-
-
-# ex) 87
-
-
-
-
-
-
-
-# ex) 88
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# def f1(b):
+#     return b != 6
+#
+# a = [0, 3, 6, 9, 0, 3, 6, 9]
+# print(list(filter(f1, a)))
+#
+# ex) 87 내장 함수
+# a = 10
+# print(id(a)) # 고유값 확인
+# print(type(a)) # 데이터 타입 확인
+# print(abs(-10)) # 절대값 구하기
+#
+# a = [10, 20, 30]
+# for i in a:
+#     print(i)
+#
+# for index,value in enumerate(a): # enumulate, 리스트의 인덱스와 키 값을 얻고 싶을때, key를 index로 쓸수도 있음
+#     print(index, value)
+#
+# a = 'print(10+20)'
+# eval(a) # 문자열도 코드로 해석, 데이터 주고받기 할때 문자열로 전송해야하고 수신자는 코드로 컴파일해서 다시 보내야하기때문
+#
+# print(min([3, 5, 7]))
+# print(max([3, 4, 5, 6])) # 최소값, 최대값을 리스트로 바로 출력걸어서 구하기
+#
+# a = [1, 2, 3, 4]
+# print(max(a)) # 최소값, 최대값을 인수로 줘서 구하기
+#
+# print(bin(200)) # 바이너리, 입력 숫자의 2진수 출력, 컴퓨터의 언어
+# print(oct(200)) # 입력 숫자의 8진수 출력, 0o-로 출력됨, 거의 안씀
+# print(hex(200)) # 입력 숫자의 16진수 출력, 컴퓨터의 2진법을 사람이 읽을수있도록 4자리씩 끊어서 해독 / 10진법(사람)과 2진법(컴퓨터)의 절충 해독법
+# 
+# a = int('123') # 문자열을 숫자로 변환
+# print(type(a))
+#
+# a = str(123) # 숫자열을 문자로 변환
+# print(type(a))
+#
+# a = list('apple') # 문자열을 리스트 타입으로 변환하여 출력
+# print(type(a))
+# print(a)
+#
+# a = list(range(5)) # 리스트 내용을 범위로 보고 순차 출력
+# print(a)
+#
+# a = divmod(7, 3) # 나누기해서 구해지는 몫과 나머지 출력
+# print(a, type(a)) #  튜플로 출력, 데이터 삭제 불가
+# print(a[0], a[1]) # 몫과 나머지 리스트로 별도 확인
+#
+# print(True and True) # and, 모두가 참이어야 참
+# print(all([True, True, True])) # all, 위와 동일한 문장, 리스트를 사용해야함
+# print(False or False or True) # or, 트루가 하나라도 있으면 트루
+# print(any([False, False, True])) # any, 위와 동일
+#
+# a = [9, 6, 3, 7, 2]
+# a.sort() # 내부 값 갱신, 정렬
+# print(a)
+#
+# b = a
+# b.sorted()
+# print(b)
+#
+# import time  # 시간,요일,날짜 정보
+# a = time.localtime(time.time())
+# b = ['월', '화', '수', '목', '금', '토', '일']
+# print(a)
+# print(a.tm_year,'년 ', a.tm_mon,'월 ', a.tm_mday,'일 ', sep='')
+# print(b[a.tm_wday],'요일 ', sep='')
+# print(a.tm_hour,'시 ', a.tm_min,'분 ', a.tm_sec,'초 ', sep='')
+#
+# import datetime # 위 정보 간략히 한줄 출력
+# print(datetime.datetime.now())
+#
+# for i in range(5):
+#     print(i)
+#     time.sleep(1) # 1초씩 지연하며 반복 출력
+#
+#
+# ex) 88 lambda
+# def f1():
+#     print(1)
+# f1()
+#
+# def f1():
+#     print(10)
+#
+# f2 = lambda: print(2)
+# f2()
+# print(type(f2))
+#
+# f2 = lambda: print(2)
+# f2
+#
+#
+# f3 = lambda x : print(x*x)
+# f3(9)
+#
+#
+# f4 = lambda x,y : print(x+y)
+# f4(10,20)
+#
+#
+# f5 = lambda : 99
+# print(f5())
+#
+#
+# f6 = lambda x,y : x+y
+# print(f6(3,4))
+#
+#
+# def f1(ff):
+#     ff()
+#
+# def f2():
+#     print('호랑이')
+# f1(f2)
+#
+#
+# f1(lambda : print('코끼리'))
+# def f3(ff):
+#     ff(10,20)
+# f3(lambda x,y : print(x+y))
+#
+#
+# def f4(a):
+#     return a > 0
+# a = filter(f4, [-2,-1,0,1,2])
+# print(list(a))
+#
+# def f4(a):
+#     return a > 0
+# lambda a: filter([-2,-1,0,1,2])
+# print(list(a))
 
 
 
