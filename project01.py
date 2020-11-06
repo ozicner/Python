@@ -1457,45 +1457,45 @@
 # f2
 #
 #
-# f3 = lambda x : print(x*x)
+# f3 = lambda x: print(x*x)
 # f3(9)
 #
 #
-# f4 = lambda x,y : print(x+y)
+# f4 = lambda x, y: print(x+y)
 # f4(10,20)
 #
 #
-# f5 = lambda : 99
+# f5 = lambda: 99
 # print(f5())
 #
 #
-# f6 = lambda x,y : x+y
+# f6 = lambda x, y: x+y
 # print(f6(3,4))
 #
 #
-# def f1(ff):
-#     ff()
-#
-# def f2():
-#     print('호랑이')
-# f1(f2)
-#
-#
-# f1(lambda : print('코끼리'))
-# def f3(ff):
-#     ff(10,20)
-# f3(lambda x,y : print(x+y))
-#
-#
-# def f4(a):
-#     return a > 0
-# a = filter(f4, [-2,-1,0,1,2])
-# print(list(a))
-#
-# def f4(a):
-#     return a > 0
-# lambda a: filter([-2,-1,0,1,2])
-# print(list(a))
+def f1(ff):
+    ff()
+
+def f2():
+    print('호랑이')
+f1(f2)
+
+
+f1(lambda : print('코끼리'))
+def f3(ff):
+    ff(10,20)
+f3(lambda x,y : print(x+y))
+
+
+def f4(a):
+    return a > 0
+a = filter(f4, [-2,-1,0,1,2])
+print(list(a))
+
+def f4(a):
+    return a > 0
+lambda a: filter([-2,-1,0,1,2])
+print(list(a))
 
 
 
