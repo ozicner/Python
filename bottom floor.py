@@ -525,7 +525,7 @@ from collections import defaultdict
 # print(type(c))
 #
 # print(type(d))
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # plt.rc('font',family='Malgun Gothic')
 #
 # years=[1950,1960,1970,1980,1990,2000,2010]
@@ -541,9 +541,12 @@ from collections import defaultdict
 #
 # plt.bar(range(len(movies)),num_oscars)
 #
+# plt.title('My Favorite Movies')
+# plt.ylabel('#of Academy Awards')
+#
 # plt.xticks(range(len(movies)),movies)
 # plt.show()
-from collections import Counter
+# from collections import Counter
 # grades=[83,95,91,87,70,0,85,82,100,67,73,77,0]
 #
 # histogram = Counter(min((grade // 10) * 10, 90 ) for grade in grades)
@@ -579,30 +582,144 @@ from collections import Counter
 #                  xytext=(5,5),
 #                  textcoords='offset points')
 # plt.show()
+#
+#
+# 61p
+# def Apple(a,b):
+#     c = []
+#     c.append(a+b)
+#     c.append(b+c)
+#     c.append(c+a)
+#     return c
+# print(Apple([0,1,2], [3,4,5]))
+#
+#
+# def f2(a,b):
+#     result = [i+j for i, j in zip(a, b)]
+#     return result
+# # print(f2([0,1,2], [3,4,5]))
+#
+#
+#
+# def f3(a):
+#     b = len(a[0])
+#     return [sum(vector[i]
+#             for vector in a)
+#             for i in range(b)]
+#
+# print(f3([[1,2], [3,4], [5,6], [7,8]]))
+# -->
+# a = [[1, 2], [3, 4], [5, 6], [7, 8]]
+# a[0] = [1, 2]  ->  b = len(a[0]) = 2
+# vector = [1,2], [3,4], [5,6], [7,8]
+# vector[0] = 1, 3, 5, 7   /   vector[1] = 2, 4, 6, 8
+#
+#
+# 62p
+# def f1(c, v):
+#     return [c * i for i in v]
+# print(f1(2, [1,2,3]))
+# print(f1(0.5, [1,2,3]))
+#
+#
+# def f2(v):
+#     n = len(v)
+#     return f1(1/n, f3(v))
+# print(f2([[1,2], [3,4], [5,6]]))
+#
+#
+# def f5(a, b):
+#     return sum(a * b for a, b in zip(a,b))
+# print(f5([1, 2, 3], [4, 5, 6]))
+#
+#
+# import math
+#
+# def f6(v):
+#     return math.sqrt(f2(v))
+# print(f6([3, 4]))
+#
+#
+#
+#
+# def f7(a,b):
+#     c = (a[0]-b[0])**2 + (a[1]-b[1])**2
+#     f3(c)
+#     return
+# print(f7([2,1], [1,2]))
+#
+#
+# def f1(a):
+#     r = len(a)
+#     c = len(a[0])
+#     return r, c
+# print(f1([
+#     [1,2,3],
+#     [4,5,6]]))
+#
+#
+# def f2(a, b):
+#     return a[b]
+# print(f2([
+#     [1,2,3],
+#     [4,5,6],
+#     [1,2,3],
+#     [4,5,6]],
+#     0))
+#
+#
+# def f3(a,i):
+#     return a[i]
+#
+# def f4(a,j):
+#     return [a[j]
+#             for a in a]
+#
+# print([0,1])
+#
+#
+#
+# def f5(r, c, fn):
+#     return [[fn(i,j)
+#              for j in range(c)]
+#             for i in range(r)]
+#
+# def f6(n):
+#     return f5(n, n, lambda i, j: 1 if i == j else 0)
+#
+# for i in f6(5):
+#     print(i)
 
 
 
+a = [[1, 2, 3, 4],
+     [2, 3, 1, 2],
+     [1, 2, 1, 3]]
 
+b = [[2, 1, 3],
+     [1, 2, 2],
+     [2, 3, 1],
+     [3, 4, 1]]
+result = []
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 행렬의 열을 구하는 함수
+def get_column(a, b):
+    return [a_i[b] for a_i in a]
+def mul_matrix(a, b):
+    print(len(a[0]), len(b))
+    assert len(a[0]) == len(b), "행렬 a, b에 대한 곱을 위해서는 a의 열의 개수와 b의 행의 개수가 같아야 합니다."
+    for a_row in a:
+        result_row = []
+        for j in range(len(b[0])):
+            b_col = get_column(b, j)
+            result_row.append(sum(a_row_v * b_col_v
+                                  for a_row_v, b_col_v
+                                  in zip(a_row, b_col)))
+        result.append(result_row)
+mul_matrix(a, b)
+print('============')
+for rows in result:
+    print(rows)
 
 
 
