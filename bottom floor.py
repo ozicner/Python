@@ -271,76 +271,337 @@ from collections import defaultdict
 #
 # tenure_bucket(3)
 #
+# from collections import Counter
+# interests = [
+#     (0, "Hadoop"), (0, "Big Data"), (0, "HBase"), (0, "Java"),
+#     (0, "Spark"), (0, "Storm"), (0, "Cassandra"),
+#     (1, "NoSQL"), (1, "MongoDB"), (1, "Cassandra"), (1, "HBase"),
+#     (1, "Postgres"), (2, "Python"), (2, "scikit-learn"), (2, "scipy"),
+#     (2, "numpy"), (2, "statsmodels"), (2, "pandas"), (3, "R"), (3, "Python"),
+#     (3, "statistics"), (3, "regression"), (3, "probability"),
+#     (4, "machine learning"), (4, "regression"), (4, "decision trees"),
+#     (4, "libsvm"), (5, "Python"), (5, "R"), (5, "Java"), (5, "C++"),
+#     (5, "Haskell"), (5, "programming languages"), (6, "statistics"),
+#     (6, "probability"), (6, "mathematics"), (6, "theory"),
+#     (7, "machine learning"), (7, "scikit-learn"), (7, "Mahout"),
+#     (7, "neural networks"), (8, "neural networks"), (8, "deep learning"),
+#     (8, "Big Data"), (8, "artificial intelligence"), (9, "Hadoop"),
+#     (9, "Java"), (9, "MapReduce"), (9, "Big Data")
+# ]
+#
+# words_and_counts = Counter(word
+#                            for user, interest in interests
+#                            for word in interest.upper().split())
+#
+# for word, count in words_and_counts.most_common():
+#     if count > 2:
+#         print(word, count)
+#
+# a = 'Tiger Lion Rabit'
+# b = a.lower().split()
+# print(b)
+#
+#
+# a = '무궁화 꽃이'
+# b = '무궁화\t꽃이'  # 탭
+# print(a)
+# print(b)
+#
+# a = [0,1,2,3,4,5,6]
+# print(a[::2])
+#
+# x,y = [1,2]
+# print(x,y)
+#
+# _,y = [1,2]
+# print(y)
+#
+# a = [3 for _ in range(5)] # i를 제거해서 무시하고 특정 데이터를 반복해서 출력
+# print(a)
+#
+# def f1():
+#     return 1+2, 1-2, 1*2
+# a = f1()
+# print(a)
+#
+# a = {10, 20, 30} # set 타입, 딕셔너리인데 키 값이 없으면 셋 타입으로 인식
+# print(type(a))
+#
+# a.add(40) # 셋 타입 데이터 추가
+# print(a)
+#
+# a.add(30) # set타입은 중복된 데이터는 추가하지 않음
+# print(a)
+#
+# assert 1 + 1 == 2
+# print()
+#
+# def f1(a):
+#     return min(a)
+#
+# assert f1([1,2,3,4]) == 5
+# print(a)
+#
+#
+# 33p ~ 57p
+#
+# a = 10
+#
+# a = a if a is not None else 0
+#
+# print(a)
+#
+# b = None
+#
+# b = b if b is not None else 0
+#
+# print(b)
+#
+# d1 = {'호랑이0': 5,
+#       '호랑이1': 77,
+#       '호랑이2': 52
+#       }
+#
+# wc = sorted(d1.items(),
+#             key=lambda wc: wc[1],
+#             reverse=True)
+#
+# print(wc)
+#
+# a = [10 for _ in [1, 1, 1, 1, 1]]
+#
+# print(a)
+#
+# a = [(x, y)
+#      for x in range(3)
+#      for y in range(4)]
+#
+# print(a)
+#
+# print('-'*100)
+#
+# k = 0
+# for i in range(3):
+#     for j in range(4):
+#         print(a[k], end=' ')
+#         k += 1
+#     print()
+#
+#
+# class Apple:
+#
+#     def __init__(self,count=0):
+#         self.count = count
+#
+#     def click(self,num_times = 1):
+#         self.count += num_times
+#
+#     def read(self):
+#         return self.count
+#
+#     def reset(self):
+#         self.count=0
+#
+# a1=Apple()
+# a2=Apple(100)
+#
+# a1.click()
+# a1.click()
+# print(a1.read())
+#
+# a2.click()
+# print(a2.read())
+#
+# class Banana(Apple):
+#
+#     def reset(self):
+#         pass
+#
+#
+# b1=Banana()
+#
+# b1.click()
+# b1.click()
+# b1.click()
+#
+# print(b1.read())
+#
+# print('-'*100)
+# def f1():
+#     yield 10
+#     yield 20
+#     yield 30
+#
+# for i in f1():
+#     print(i)
+#
+# def f2(n):
+#     i=0
+#     while i<n:
+#         yield i
+#         i+=1
+#
+#
+# for i in f2(10):
+#     print(i)
+# def f3():
+#     n=1
+#     while True:
+#         yield n
+#         n+=1
+#
+# a=f3()
+# for i in a:
+#     print(i)
+#
+# b=[i for i in a if i%2==0 ]
+#
+# for i in b:
+#     print(i)
+# a=[10,20,30]
+#
+# for i,v in enumerate(a):
+#     print(i,v)
+#
+# b={0:10,1:20,2:30}
+#
+# for i,v in b.items():
+#     print(i,v)
+# from random import *
+#
+# print(int(random()*100))
+#
+# print(randint(10,20))
+#
+# print(randrange(0,10,3))
+#
+# seed(10)
+# for i in range(5):
+#     print(random())
+#
+#
+# a=[1,2,3,4,5]
+#
+# shuffle(a)
+#
+# print(a)
+#
+# b=choice(a)
+#
+# print(b)
+#
+# a=range(60)
+# b=sample(a,3)
+#
+# print(b)
+#
+# a=[1,2,3]
+# b=[4,5,6]
+# c=[i for i in zip(a,b)]
+#
+# print(c)
+#
+# d,e=zip(*c)
+#
+# print(d)
+# print(e)
+#
+# def f1(a: int,b: int) -> int:
+#     return a+b
+#
+# a: list = []
+#
+#
+#
+# from typing import List
+#
+# b: List = []
+#
+# print(type(a))
+# print(type(b))
+#
+# c: List[int] = []
+#
+# print(type(c))
+#
+# print(type(d))
+# import matplotlib.pyplot as plt
+# plt.rc('font',family='Malgun Gothic')
+#
+# years=[1950,1960,1970,1980,1990,2000,2010]
+# gdp=[300.2,543.3,1075.9,2862.5,5979.6,10289.7,14958.3]
+#
+# plt.plot(years,gdp,color='green',marker='o',linestyle='solid')
+# plt.title('Nominal GDP')
+#
+# plt.ylabel('Billions of $')
+# plt.show()
+# movies=['Annie Hall','Ben-Hur','Casablanca','Gandhi','West Side Story']
+# num_oscars=[5,11,3,8,10]
+#
+# plt.bar(range(len(movies)),num_oscars)
+#
+# plt.xticks(range(len(movies)),movies)
+# plt.show()
 from collections import Counter
-interests = [
-    (0, "Hadoop"), (0, "Big Data"), (0, "HBase"), (0, "Java"),
-    (0, "Spark"), (0, "Storm"), (0, "Cassandra"),
-    (1, "NoSQL"), (1, "MongoDB"), (1, "Cassandra"), (1, "HBase"),
-    (1, "Postgres"), (2, "Python"), (2, "scikit-learn"), (2, "scipy"),
-    (2, "numpy"), (2, "statsmodels"), (2, "pandas"), (3, "R"), (3, "Python"),
-    (3, "statistics"), (3, "regression"), (3, "probability"),
-    (4, "machine learning"), (4, "regression"), (4, "decision trees"),
-    (4, "libsvm"), (5, "Python"), (5, "R"), (5, "Java"), (5, "C++"),
-    (5, "Haskell"), (5, "programming languages"), (6, "statistics"),
-    (6, "probability"), (6, "mathematics"), (6, "theory"),
-    (7, "machine learning"), (7, "scikit-learn"), (7, "Mahout"),
-    (7, "neural networks"), (8, "neural networks"), (8, "deep learning"),
-    (8, "Big Data"), (8, "artificial intelligence"), (9, "Hadoop"),
-    (9, "Java"), (9, "MapReduce"), (9, "Big Data")
-]
+# grades=[83,95,91,87,70,0,85,82,100,67,73,77,0]
+#
+# histogram = Counter(min((grade // 10) * 10, 90 ) for grade in grades)
+#
+#
+# plt.bar([x+5 for x in histogram.keys()],
+#         histogram.values(),
+#         10,
+#         edgecolor=(0,0,0))
+#
+# plt.axis([-5,105,0,5])
+#
+#
+# plt.show()
+# variance=[1,2,4,8,16,32,64,128,256]
+# bias_squared=[256,128,64,32,16,8,4,2,1]
+# total_error=[x+y for x,y in zip(variance,bias_squared)]
+# xs=[i for i,_ in enumerate(variance)]
+#
+# plt.plot(xs, variance, 'g-',label='variance')
+# plt.plot(xs, bias_squared, 'r-.',label='bias^2')
+# plt.plot(xs, total_error, 'b:',label='total error')
+#
+# plt.legend(loc=9)
+# plt.show()
+# friends=[70,65,72,63,71,64,60,64,67]
+# minutes=[175,170,205,120,220,130,105,145,190]
+# labels=['a','b','c','d','e','f','g','h','i']
+# plt.scatter(friends,minutes)
+# for label,friend_count,minute_count in zip(labels,friends,minutes):
+#     plt.annotate(label,
+#                  xy=(friend_count,minute_count),
+#                  xytext=(5,5),
+#                  textcoords='offset points')
+# plt.show()
 
-words_and_counts = Counter(word
-                           for user, interest in interests
-                           for word in interest.upper().split())
-
-for word, count in words_and_counts.most_common():
-    if count > 2:
-        print(word, count)
-
-a = 'Tiger Lion Rabit'
-b = a.lower().split()
-print(b)
 
 
-a = '무궁화 꽃이'
-b = '무궁화\t꽃이'  # 탭
-print(a)
-print(b)
 
-a = [0,1,2,3,4,5,6]
-print(a[::2])
 
-x,y = [1,2]
-print(x,y)
 
-_,y = [1,2]
-print(y)
 
-a = [3 for _ in range(5)] # i를 제거해서 무시하고 특정 데이터를 반복해서 출력
-print(a)
 
-def f1():
-    return 1+2, 1-2, 1*2
-a = f1()
-print(a)
 
-a = {10, 20, 30} # set 타입, 딕셔너리인데 키 값이 없으면 셋 타입으로 인식
-print(type(a))
 
-a.add(40) # 셋 타입 데이터 추가
-print(a)
 
-a.add(30) # set타입은 중복된 데이터는 추가하지 않음
-print(a)
 
-assert 1 + 1 == 2
-print()
 
-def f1(a):
-    return min(a)
 
-assert f1([1,2,3,4]) == 5
-print(a)
+
+
+
+
+
+
+
+
+
 
 
 
