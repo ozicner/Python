@@ -260,6 +260,7 @@
 # print()
 #
 #
+import enum
 from collections import defaultdict
 # def tenure_bucket(tenure):
 #     if tenure < 2:
@@ -484,6 +485,7 @@ from collections import defaultdict
 #
 # shuffle(a)
 #
+#
 # print(a)
 #
 # b=choice(a)
@@ -689,38 +691,253 @@ import matplotlib.pyplot as plt
 #
 # for i in f6(5):
 #     print(i)
+#
+#
+#
+# a = [[1, 2, 3, 4],
+#      [2, 3, 1, 2],
+#      [1, 2, 1, 3]]
+#
+# b = [[2, 1, 3],
+#      [1, 2, 2],
+#      [2, 3, 1],
+#      [3, 4, 1]]
+# result = []
+#
+# # 행렬의 열을 구하는 함수
+# def get_column(a, b):
+#     return [a_i[b] for a_i in a]
+# def mul_matrix(a, b):
+#     print(len(a[0]), len(b))
+#     assert len(a[0]) == len(b), "행렬 a, b에 대한 곱을 위해서는 a의 열의 개수와 b의 행의 개수가 같아야 합니다."
+#     for a_row in a:
+#         result_row = []
+#         for j in range(len(b[0])):
+#             b_col = get_column(b, j)
+#             result_row.append(sum(a_row_v * b_col_v
+#                                   for a_row_v, b_col_v
+#                                   in zip(a_row, b_col)))
+#         result.append(result_row)
+# mul_matrix(a, b)
+# print('============')
+# for rows in result:
+#     print(rows)
+#
+#
+# 69p
+# from collections import Counter
+#
+# import matplotlib.pyplot as plt
+#
+# num = [100.0,49,41,40,25,21,21,19,19,18,18,16,15,15,15,15,14,14,13,13,13,13,12,12,11,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+#
+# a = Counter(num)
+# xs = range(101)
+# ys = [a[x] for x in xs]
+# plt.bar(xs, ys)
+# plt.axis([0, 101, 0, 25])
+# plt.xlabel('friends')
+# plt.ylabel('people')
+# # plt.show()
+#
+# num1 = len(num) # 데이터의 개수
+# print(num1)
+#
+# large = max(num)
+# small = min(num)
+# print(large, small)
+#
+# sort = sorted(num)
+# s_v = sort[0] # 제일 작은 값
+# s_s_v = sort[1] # 두번째로 작은 값
+# s_l_v = sort[-2] # 두번째로 큰 값
+# print(s_v, s_s_v, s_l_v)
+#
+#
+#
+# def f1(xs):
+#     return sum(xs) / len(xs) # 평균 or 중앙값, 중심경향성 파악
+# print(f1(num))
+#
+#
+# def _median_odd(xs):
+#     return sorted(xs)[len(xs) // 2]
+#
+# def _median_even(xs):
+#     sorted_xs = sorted(xs)
+#     mid = len(xs) // 2
+#     return (sorted_xs[mid - 1] + sorted_xs[mid]) / 2
+#
+# def median(v):
+#     return _median_even(v) if len(v) % 2 == 0 else _median_odd(v)
+#
+# print(median([1,10,2,9,5]))
+# print(median([1,9,2,10])) # 중앙 값 두개를 더해서 2로 나눈 값을 출력해줌
+# print(median(num))
+#
+#
+#
+# def f2():
+#     return 10
+# def f3():
+#     return f2()
+# def f4():
+#     return f3()
+# print(f4())  # 함수에서 함수를 계속 콜, 리턴 값 없으면 안나옴
+#
+#
+#
+# a = abs(-3)
+# print(a)
+#
+# abs = 10   # 내장 함수나 예약어를 변수로 사용하면 오류 발생 / TypeError: 'int' object is not callable
+# a = abs(-3)
+# print(a)
+#
+#
+# print(int(0.2 * 267)) # 소수점 절삭
+#
+# def q(xs, p):
+#     p_i = int(p * len(xs))
+#     return sorted(xs)[p_i]
+#
+# print(q(num, 0.10))  # 분위, 중앙값을 포괄, 특정 백분위보다낮은 분위에 속하는 데이터
+# print(q(num, 0.90))
+#
+#
+# def mode(x):
+#     cs = Counter(x)
+#     m_c = max(cs.values())
+#     return [x_i for x_i, c in cs.items()
+#             if c == m_c]
+# print(set(mode(num))) # set, 중복값 제거
+#
+#
+#
+# a = [1, 2, 3, 4, 5] # 변위 데이터
+# b = sum(a) / len(a) # 평균
+#
+# c = [i - b for i in a] # 편차, i: 변위 a에서 하나씩 가져온 값을 넣음
+# print(c)
+#
+# d = [abs(j) for j in c] # 편차 절대값들의 합의 평균 -> 평균편차
+# print(d)
+# print(sum(d))
+# print(sum(d) / b)
+# print(int(sum(d) / b))
+#
+# # 편차 제곱합의 평균 -> 분산
+# def f2(xs):
+#     return max(xs) - min(xs)
+#
+# print(f2(num))
+#
+# from scratch.linear_algebra import sum_of_squares
+#     x_bar = f1(xs)
+#     return [x - x_bar for x in xs]
+#
+# def variance(xs):
+#     n = len(xs)
+#     deviations = f2(xs)
+#     return sum_of_squares(deviations) / (n - 1)
+#
+# print(81.54 < variance(num) < 81.55)
+#
+#
+#
+# import math
+#
+# def s_d(xs):
+#     return math.sqrt(variance(xs))
+# print(9.02 < s_d(num) < 9.04)
 
 
 
-a = [[1, 2, 3, 4],
-     [2, 3, 1, 2],
-     [1, 2, 1, 3]]
+# 86p
 
-b = [[2, 1, 3],
-     [1, 2, 2],
-     [2, 3, 1],
-     [3, 4, 1]]
-result = []
+# class Color(enum.Enum):
+#     RED = 0
+#     BLUE = 1
+#     GREEN = 2
+#
+# print(random.random(Color))
 
-# 행렬의 열을 구하는 함수
-def get_column(a, b):
-    return [a_i[b] for a_i in a]
-def mul_matrix(a, b):
-    print(len(a[0]), len(b))
-    assert len(a[0]) == len(b), "행렬 a, b에 대한 곱을 위해서는 a의 열의 개수와 b의 행의 개수가 같아야 합니다."
-    for a_row in a:
-        result_row = []
-        for j in range(len(b[0])):
-            b_col = get_column(b, j)
-            result_row.append(sum(a_row_v * b_col_v
-                                  for a_row_v, b_col_v
-                                  in zip(a_row, b_col)))
-        result.append(result_row)
-mul_matrix(a, b)
-print('============')
-for rows in result:
-    print(rows)
+import random
+from enum import Enum
 
+# class Kid(enum.Enum):
+#     BOY = 0  # enum 문법, 변수를 숫자로 표현해서 간소화, 편의성
+#     GIRL = 1
+#
+# ct0 = 0
+# ct1 = 0
+# ct2 = 0
+#
+# for _ in range(1000):
+#     a = random.choice([Kid.BOY, Kid.GIRL])
+#     b = random.choice([Kid.BOY, Kid.GIRL])  # a,b 조합, 4가지 경우의 수 제공 // 남/남, 남/여, 여/여, 여/남
+#
+#     if a == Kid.BOY:                    # 50%, a가 남자인 경우는 둘 중 하나
+#         ct0 += 1
+#     if a == Kid.BOY and b == Kid.GIRL:  # 25%, a와 b가 남자이거나 여자인 경우 넷 중 하나
+#         ct1 += 1
+#     if a == Kid.BOY or b == Kid.GIRL:   # 75%, a가 남자인것과 b가 여자인 것 모든 경우
+#         ct2 += 1
+#
+# print(ct0, ct1, ct2)
+# print(ct1 / ct0)
+# print(ct1 / ct2)  # 조건부 확률 공식
+#
+#
+#
+#
+#
+#
+# a = []
+# b = random.randint(1, 10)
+# for c in range(2):
+#     while b in a:
+#         b = random.randint(1, 10)
+#     a.append(b)
+# c = sorted(a)
+# count = 0
+# count1 = 0
+# for i in range(100000):
+#     while True:
+#         x = []
+#         y = random.randint(1, 10)
+#         for z in range(2):
+#             while y in x:
+#                 y = random.randint(1, 10)
+#             x.append(y)
+#         z = sorted(x)
+#         if c == z:
+#             break
+#         else:
+#             count += 1
+#     sum = count + count1
+#     count1 = sum
+#     count = 0
+# print(count1 / 100000)
+#
+#
+#
+import math
+import matplotlib.pyplot as plt
+
+SQRT_TWO_PI = math.sqrt(2 * math.pi)
+
+def f1(x, mu=0, sigma=1):
+    return (math.exp(-(x-mu) ** 2 / 2 / sigma ** 2) / (SQRT_TWO_PI * sigma))
+
+xs = [x / 10.0 for x in range(-50, 50)]
+plt.plot(xs,[f1(x,sigma=1) for x in xs],'-',label='mu=0,sigma=1')
+plt.plot(xs,[f1(x,sigma=2) for x in xs],'--',label='mu=0,sigma=2')
+plt.plot(xs,[f1(x,sigma=0.5) for x in xs],':',label='mu=0,sigma=0.5')
+plt.plot(xs,[f1(x,mu=-1) for x in xs],'-.',label='mu=-1,sigma=1')
+plt.legend()
+plt.title("Various Normal pdfs")
+plt.show()
 
 
 
