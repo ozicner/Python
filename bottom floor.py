@@ -922,22 +922,220 @@ from enum import Enum
 #
 #
 #
-import math
-import matplotlib.pyplot as plt
+# import math
+# import matplotlib.pyplot as plt
+#
+# SQRT_TWO_PI = math.sqrt(2 * math.pi)
+#
+# def f1(x, mu=0, sigma=1):
+#     return (math.exp(-(x-mu) ** 2 / 2 / sigma ** 2) / (SQRT_TWO_PI * sigma))
+#
+# xs = [x / 10.0 for x in range(-50, 50)]
+# plt.plot(xs,[f1(x,sigma=1) for x in xs],'-',label='mu=0,sigma=1')
+# plt.plot(xs,[f1(x,sigma=2) for x in xs],'--',label='mu=0,sigma=2')
+# plt.plot(xs,[f1(x,sigma=0.5) for x in xs],':',label='mu=0,sigma=0.5')
+# plt.plot(xs,[f1(x,mu=-1) for x in xs],'-.',label='mu=-1,sigma=1')
+# plt.legend()
+# plt.title("Various Normal pdfs")
+# plt.show()
+#
+#
+#
+#
+# def f1():
+#     print(1)
+#
+# def f2():
+#     print(2)
+#
+# b = {10:f1(), 20:f2()}
+#
+# print()
+#
+#
+#
+#
+#
+# for x in range(2, 10):
+#     print('[' + str(x) + '단]')
+#     for y in range(1, 10):
+#         print(x, 'X', y, '=', x * y)
+#
+#
+# def f1(num):
+#     t = {10:'호랑이', 20:'독수리', 30:'앵무새'}
+#     return t[num]
+# print(f1(10))
+#
+#
+#
+#
+# def f2():
+#     print('나는 구구단')
+#
+# def f3():
+#     print('나는 합산')
+#
+# def f4(n):
+#     b = {10:f2, 20:f3}
+#     b[n]()
+#
+# print(f4(10), f4(20))
+#
+#
+#
+#
+# exclusive or 연산
+# print(False^False) # F
+# print(False^True)  # T
+# print(True^False)  # T
+# print(True^True)   # F
+#
+#
+import numpy as np
+# a = np.arange(10)  # 0 1 2...7 8 9
+# b = list(range(10))  # 0, 1, 2...7, 8, 9
+# print(a, b)
+#
+#
+# for _ in range(10):
+#     c = a * 2
+# print(c)
+#
+#
+# a = np.random.randn(3,4)  # ndarray, 행과 열 갯수 지정, 리스트로 랜덤 출력
+# print(a);print(sep='*'*50)
+#
+# b = a + a
+# print(a);print(sep='*'*50)
+#
+# c = a + b
+# print(b);print(sep='*'*50)
+#
+# print(a.shape, type(a.shape));print(sep='*'*50)  # 가로,세로 행의 갯수를 튜플로 출력
+#
+#
+# a = [1,2,3,4]
+# b = np.array(a)
+# print(b);print(sep='*'*50)  # 리스트 타입을 어레이 타입으로 변환
+#
+# a = [
+#     [1,2,3,4],
+#     [5,6,7,8],
+#     [9,0,1,2]
+# ]
+# b = np.array(a)
+# print(b);print(sep='*'*50)
+#
+# print(b.ndim);print(sep='*'*50)  # 디멘션, 어레이와 같음
+#
+#
+# print(np.zeros(5));print(sep='*'*50)  # 5개의 0.을 생성
+#
+# print(np.zeros((3,4,2)))  # 3개의 배열을 생성하고 각각 세로 4, 가로 2
+#
+#
+# a = np.array([[1,2,3],
+#              [4,5,6]])
+#
+# b = np.array([[2,3,4],
+#              [5,6,7]])
+#
+# print(a+b);print(sep='*'*50)
+# print(a-b);print(sep='*'*50)
+# print(a*b);print(sep='*'*50)
+# print(a/b);print(sep='*'*50)
+# print(a//b);print(sep='*'*50)
+# print(1/a);print(sep='*'*50)
+#
+# print(4**0.5)
+#
+# a = np.arange(10)
+# print(a[5:8])
+#
+# a[:] = 7
+# print(a)
+#
+# b = np.array([[2,3,4],
+#              [5,6,7]])
+#
+#
+# a = np.array(['호랑이', '코끼리', '독수리', '호랑이'])
+#
+#
+# a = np.empty((8,4))
+#
+# for i in range(8):
+#     a[i] = i
+#
+# print(a)
+#
+#
+# a[[-3, -5, -7]]
+# print(a)
+#
+# a = np.arange(32)
+# print(a)
+#
+# b = a.reshape((8,4))
+# print(b)
+#
+#
+#
+# a = np.array([[1,2,3,4],
+#               [4,5,6,8],
+#               [1,2,3,4]])
+#
+# b = np.arange(16).reshape((2,2,4))
+# print(b)
+#
+#
+#
+# a = np.array([1,2,3,4,5])
+# print(np.sqrt(a))
+#
+#
+#
+# a = np.array([1,2,3])
+# b = np.array([2,3,4])
+# print(a+b)
+# print(np.add(a,b))
+#
+# points = np.arange(-5,5,0.01)
+# xs, ys = np.meshgrid(points, points)
+#
+# z = np.sqrt(xs ** 2 + ys ** 2)
+#
+# plt.imshow(z, cmap=plt.cm.gray); plt.colorbar()
+# plt.title("$\sqrt{x^2 + y^2}$")
+#
+# plt.show()
+#
+#
+#
+# xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
+# yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
+# cond = np.array([True, False, True, True, False])
+#
+# result = [(x if c else y)
+#           for x, y, c in zip(xarr, yarr, cond)]
+# print(result)
+#
+#
+# result = np.where(cond, xarr, yarr)
+# print(result)
 
-SQRT_TWO_PI = math.sqrt(2 * math.pi)
 
-def f1(x, mu=0, sigma=1):
-    return (math.exp(-(x-mu) ** 2 / 2 / sigma ** 2) / (SQRT_TWO_PI * sigma))
+arr = np.arange(10)
+np.save('some_array', arr)
 
-xs = [x / 10.0 for x in range(-50, 50)]
-plt.plot(xs,[f1(x,sigma=1) for x in xs],'-',label='mu=0,sigma=1')
-plt.plot(xs,[f1(x,sigma=2) for x in xs],'--',label='mu=0,sigma=2')
-plt.plot(xs,[f1(x,sigma=0.5) for x in xs],':',label='mu=0,sigma=0.5')
-plt.plot(xs,[f1(x,mu=-1) for x in xs],'-.',label='mu=-1,sigma=1')
-plt.legend()
-plt.title("Various Normal pdfs")
-plt.show()
+np.load('some_array.npy')
+print(arr)
+
+
+
+
+
 
 
 
