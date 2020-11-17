@@ -266,32 +266,151 @@ import pandas as pd
 # df.columns = ['나이','급여']  # 위에 .T 여부 따라 컬럼수 맞춰줘야함
 # print(df)
 #
-df = pd.DataFrame(columns=('이름', '나이', '고향'))  # 컬럼만 생성
-print(df)
-print(len(df))  # 0이 출력됨. 로우값이 없다는 뜻
+# df = pd.DataFrame(columns=('이름', '나이', '고향'))  # 컬럼만 생성
+# print(df)
+# print(len(df))  # 0이 출력됨. 로우값이 없다는 뜻
 #CRUD/ 생성,갱신,삭제
 # df.loc[20] = ['호랑이', '30', '서울']  # 20은 키값이고 컬럼순으로 데이터 입력, 생성
 # df.loc[30] = ['너구리', '20', '부산']
 # df.loc[40] = ['두루미', '25', '인천']  # 중복된 키값에 데이터 입력시 최신껄로 갱신
 #
 #
-for i in range(10):
-    df.loc[len(df)] = ["이순신" + str(i), 50+i, "울산"]
+# for i in range(10):
+#     df.loc[len(df)] = ["이순신" + str(i), 50+i, "울산"]
 # print(df)
 #
 # a = df.drop([20])  # 원본 보존하고 출력만 삭제
 # df = df.drop([20])  # 완전 삭제
-print(df)
+# print(df)
 #
 # print(df.loc[20])  # 키값으로 데이터 검색
 # print(df.head())  # 상위 5개 데이터만 출력, 원하는 숫자 넣어서 검색 가능
 # print(df.tail())  # 하위 5개 데이터만 출력
 #
 # print(df.tail());print('-'*30)
+#
+#
+#
+import numpy as np
+# x = np.array([[1., 2., 3.],
+#               [4., 5., 6.]])
+# y = np.array([[6., 23.],
+#               [-1, 7],
+#               [8, 9]])
+# print(x); print(sep="*")
+# print(y); print(sep="*")
+# print(x.dot(y))
+# print(np.dot(x, y)); print(sep="*")     # 동일( x.dot(y) = np.dot(x, y) )
+# print(np.ones(3))
+# print(np.dot(x, np.ones(3)))
+# print(x @ np.ones(3)); print(sep="*")
+# ##########################################################################
+# from numpy.linalg import inv, qr
+# x = np.random.randn(3, 3)
+# print(x); print(sep="*")
+# print(x.T); print(sep="*")
+# y = inv(x)      # 역행렬 구하기
+# print(y); print(sep="*")
+# mat = x.T.dot(x)
+# print(inv(mat)); print(sep="*")
+# a = np.array([1, 2, 3])
+# b = np.diag(a)          # diag:
+# print(np.trace(b)); print(sep="*")      # trace: 대각선 원소의 합
+# # A*x=b에서 x 값 구하기
+# # 문제1)
+# A = np.array([[1,2],
+#               [3,4]])
+# b = np.array([[6,7],
+#               [8,9]])
+# x = np.linalg.solve(A,b)
+# print(x); print(sep="*")
+# # 문제2)
+# A = np.array([[2, 3],
+#               [3, 1]])
+# b = np.array([[5],
+#               [2]])
+# x = np.linalg.solve(A, b)
+# print(x); print(sep="*")
+#
+#
+# import math
+#
+# print(math.radians(30))
+#
+#
+# # 사각형의 이동
+# import matplotlib.pyplot as plt
+# x = [10, 20, 20, 10, 10]
+# y = [10, 10, 20, 20, 10]
+# dx = 50
+# dy = 30
+# c = []
+# d = []
+# for i in range(len(x)):
+#     e = x[i]
+#     f = y[i]
+#     a = [[1, 0, dx], [0, 1, dy], [0, 0, 1]]
+#     b = [[e], [f], [1]]
+#     t = np.dot(a, b)
+#     c.append(t[0])
+#     d.append(t[1])
+# # 회전하는 사각형( 원점을 기준으로, 각도는 30으로 고정 )
+# c1 = []
+# d1 = []
+# for i in range(len(x)):
+#     e = x[i]
+#     f = y[i]
+#     a1 = [[np.sqrt(3)/2, -1/2, 0], [1/2, np.sqrt(3)/2, 0], [0, 0, 1]]
+#     b1 = [[e], [f], [1]]
+#     t = np.dot(a1, b1)
+#     c1.append(t[0])
+#     d1.append(t[1])
+# # # 제자리에서 회전한 사각형하기
+# x1 = [-5, 5, 5, -5, -5]
+# y1 = [-5, -5, 5, 5, -5]
+# c2 = []
+# d2 = []
+# # 원점에서 회전
+# for i in range(len(x)):
+#     e = x1[i]
+#     f = y1[i]
+#     a1 = [[np.sqrt(3)/2, -1/2, 0], [1/2, np.sqrt(3)/2, 0], [0, 0, 1]]
+#     b1 = [[e], [f], [1]]
+#     t = np.dot(a1, b1)
+#     c2.append(t[0])
+#     d2.append(t[1])
+# # 회전한 사각형을 이동
+# for i in range(len(c2)):
+#     c2[i] = c2[i] + 15
+#     d2[i] = d2[i] + 15
+# # 그래프 구하기
+# plt.plot(x, y)
+# plt.plot(c, d)
+# plt.plot(c1, d1)
+# plt.plot(c2, d2)
+# plt.xlim(-10, 100)
+# plt.ylim(-10, 100)
+# plt.show()
 
 
+# 계단 그래프 만들기
+import random
+position = 0
+walk = [position]
+steps = 5000
+for i in range(steps):
+    step = 1 if random.randint(0,1) else -1
+    position += step
+    walk.append(position)
+plt.plot(walk[:100])
+nsteps = 5000
+draws = np.random.randint(0,2,size=nsteps)
+steps = np.where(draws > 0,1,-1)
+walk = steps.cumsum()
 
-
+print(walk.min(), walk.max(), sep=' , ')
+print((np.abs(walk) >= 10).argmax())
+plt.show()
 
 
 
