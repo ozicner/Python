@@ -391,30 +391,245 @@ import numpy as np
 # plt.xlim(-10, 100)
 # plt.ylim(-10, 100)
 # plt.show()
-
-
+#
+#
 # 계단 그래프 만들기
-import random
-position = 0
-walk = [position]
-steps = 5000
-for i in range(steps):
-    step = 1 if random.randint(0,1) else -1
-    position += step
-    walk.append(position)
-plt.plot(walk[:100])
-nsteps = 5000
-draws = np.random.randint(0,2,size=nsteps)
-steps = np.where(draws > 0,1,-1)
-walk = steps.cumsum()
+# import random
+# position = 0
+# walk = [position]
+# steps = 5000
+# for i in range(steps):
+#     step = 1 if random.randint(0,1) else -1
+#     position += step
+#     walk.append(position)
+# plt.plot(walk[:100])
+# nsteps = 5000
+# draws = np.random.randint(0,2,size=nsteps)
+# steps = np.where(draws > 0,1,-1)
+# walk = steps.cumsum()
+#
+# print(walk.min(), walk.max(), sep=' , ')
+# print((np.abs(walk) >= 10).argmax())
+# plt.show()
+#
+#
+# cx_Oracle 패키지 모듈들을 import
+import cx_Oracle as oci
+# Oracle 서버와 연결(Connection 맺기)
+# conn = oci.connect('hwj', '1234', 'localhost:1521/orcl')
+# conn = oci.connect('chk/1234@localhost:1521/orcl')
+# Connection 확인
+# print(conn.version)
+# conn.version
+# Oracle DB의 test_member 테이블 검색(select)
+# cursor = conn.cursor() # cursor 객체 얻어오기
+# cursor.execute('select * from EMP') # SQL 문장 실행
+# print(cursor.fetchall())  # 한번에 불러옴
+# rows = cursor.fetchall()  # 원하는 순서의 데이터 뽑아오기
+# print(rows[3])
+# print(cursor.fetchone())  # 하나만 불러옴
+# print(cursor.fetchmany())  # 원하는 갯수만큼 불러옴
+# for rs in cursor:   # for문 돌려서 하나씩
+#     print(rs)
+# cursor.close() # cursor 객체 닫기
+# Oracle 서버와 연결 끊기
+# conn.close
+#
+#
+# import cx_Oracle
+# db = cx_Oracle.connect('chk','1234', 'localhost:1521/orcl')
+# print('{}'.format(db.version))
+# import pandas as pd
+# datas = pd.read_sql(sql='select * from EMP', con = db)
+# print(datas)
+# db.close
+#
+#데이터 프레임 생성과 csv 파일 생성
+# data = pd.DataFrame({'기온':[10,20,30,40],
+#                      '강수량':[15,2,35,40]})
+# print(data)
+# fn = 'out.csv'
+# data.to_csv(fn)
+#
+# fn = '호%d랑%d이' % (10,20)
+# print(fn)
+#
+# fn = '%04d.csv' % (1)
+# print(fn)
+#
+import sys
+#
+# for i in range(3):
+#     fn = 'tiger%04d.csv' % (i)
+#     # data.to_csv(fn,sep='|') # 파일 별로 데이터 간에 파이프로 구분
+#     data.to_csv(sys.stdout, sep='|')  # 파일 생성하지 않고, 저장 데이터 바로 보여줌
+#     print(fn)
+#
+#
+#
+# data = pd.DataFrame({'기온':[10, None, 30, 40],  # 데이터 일부 누락
+#                      '강수량':[15, 20, 35, 40]})
+# print(data)
+# fn = 'out.csv'
+# data.to_csv(sys.stdout, na_rep='호랑이')  # 누락 데이터를 채우겟다
+#
+# a = pd.read_csv('out.csv')  # 해당 파일에서 누락으로 수정하면 NaN 출력, 스페이스하면 공백 출력
+# print(a)
+#
+# print(pd.isnull(data))  # 결측값 확인, 트루 출력
+# print(data.replace(np.nan, 100))  # 결측 값 입력 혹은 교체
+#
+#
+# print(pd.read_csv('out.csv'))
+# f = open('out.csv')
+#
+# for line in f:
+#     print(line)
+#
+# with open('out.csv') as f:
+#     lines = list(f)
+#     header, values = line[0], lines[1:]
+# print(f)
+#
+#
+# a = [1,2,3]
+# b = [[4,5,6]]
+# print(a,b)
+#
+# for i in zip(a,*b):  # *로 전치하여 a,b 짝지어 매칭
+#     print(i)
+#
+#
+# obj = """
+# {"name": "Wes",
+#  "places_lived": ["United States", "Spain", "Germany"],
+#  "pet": null,
+#  "siblings": [{"name": "Scott", "age": 30, "pets": ["Zeus", "Zuko"]},
+#               {"name": "Katie", "age": 38,
+#                "pets": ["Sixes", "Stache", "Cisco"]}]
+# } """
+#
+# import json
+# result = json.loads(obj)
+# print(result)
+#
+# # asjson = json.dumps(result)
+# # print(result)
+#
+# siblings = pd.DataFrame(result['siblings'], columns=['name', 'age'])
+# print(siblings)
+#
+#
+# data = pd.read_json('sample.json')
+# print(data)
+#
+# print(data.to_json())
+# print(data.to_json(orient='records'))
+#
+#
+# x = pd.ExcelFile('ex1.xlsx')  # 외부 엑셀 파일 불러오기
+# a = pd.read_excel(x, 'Sheet1')
+# print(a)
+#
+#
+# import requests
+#
+# url = 'https://api.github.com/repos/pandas-dev/pandas/issues'
+# resp = requests.get(url)
+# print(resp)
+# data = resp.json()
+# print(data[0]['title'])   # 403에러
+#
+#
+# 중복 제거
+# data = pd.DataFrame({'k1': ['one','two']*3+['two'],
+#                      'k2': [1,1,2,3,3,4,4]})
+# print(data)
+# print(data.duplicated())  # 중복 값을 불리언 시리즈로 반환
+# print(data.drop_duplicates())
+#
+# data['v1'] = range(7)
+# print(data.drop_duplicates(['k1']))
+# print(data.drop_duplicates(['k1', 'k2'], keep='last'))
+#
+# data = pd.DataFrame({'food': ['밥','국', '밥',
+#                               '면', '옥수수', '보리밥',
+#                               '소면', '꿀', '떡'],
+#                      '인분': [4, 3, 12, 6, 7.5, 8, 3, 5, 6]})
+# print(data)
+#
+#
+# meat = {
+#   'bacon': 'pig',
+#   'pulled pork': 'pig',
+#   'pastrami': 'cow',
+#   'corned beef': 'cow',
+#   'honey ham': 'pig',
+#   'nova lox': 'salmon'}
+#
+# l = data['food'].str.lower()
+# print(l)
 
-print(walk.min(), walk.max(), sep=' , ')
-print((np.abs(walk) >= 10).argmax())
+
+
+#############################
+
+import json
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from collections import defaultdict, Counter
+import seaborn as sns
+usa_path = 'usa.txt'
+records = [json.loads(line) for line in open(usa_path, encoding='UTF8')]
+# records 는 list 타입이고, 원소들은 dict 타입
+# print(records)
+# 'tz' key 값이고 (timezone), 'tz' 가 있는 경우 그 값을 list 에 추가
+# time_zones 는 records 의 모든 dict 에서 'tz' key 에 해당하는 value 를 모아둔 list
+time_zones = [rec['tz'] for rec in records if 'tz' in rec]
+# print(time_zones)
+# time_zones 의 대륙/도시 명을 key 값으로 하고 개수를 그 value 로 한 defaultdict 를 반환
+def get_counts(sequence):  #
+    counts = defaultdict(int)  # values will initialize to 0
+    for x in sequence:
+        counts[x] += 1
+    return counts
+# counts 는 key 값이 대륙/도시, value 가 갯수(count) , time_zones 에서 개수를 셈
+# get_counts 함수에 time_zones 를 인수로 넣어서 중복되는 갯수를 count 하여 defaultdict 을 counts 에 저장
+counts = get_counts(time_zones)
+# print(counts['America/New_York'])
+# print(len(time_zones))
+# 가장 많이 등장하는 상위 10개의 표준 시간대 list 를 리턴하는 함수
+def top_counts(count_dict, n=10):
+    value_key_pairs = [(count, tz) for tz, count in count_dict.items()]
+    # sort() 는 default 가 오름차순 정렬, 내림차순 정렬은 reverse=True 옵션으로 설정
+    value_key_pairs.sort(reverse=True)
+    return value_key_pairs[:n]
+# 대륙/도시 별 count 한 counts 를 인수로 받고 count 수가 많은 순서대로 출력
+# print(top_counts(counts))
+# 위 top_counts 기능을 defaultdict 에서 메소드 지원
+# defaultdict.most_common(x)  상위 x 만큼 출력
+counts = Counter(time_zones)
+# for i in counts.most_common(10):
+#     print(i)
+frame = pd.DataFrame(records)
+# frame 정보 출력
+# print(frame.info())
+# 'tz' co; 의 상위 10개를 출력
+# print(frame['tz'][:10])
+# 'tz' col 에 중복되는 값을 세어줌
+# print(frame['tz'].value_counts())
+# 먼저 col 의 값 중에서 '' 인 것을 'Unkown' 으로 바꾼 후
+clean_tz = frame['tz'].fillna('*Missing*')
+clean_tz[clean_tz == ''] = '*Unknown*'
+# 바꾼 후 .value_counts() 'tz' col 에 중복되는 값을 셈
+tz_counts = clean_tz.value_counts()
+print(tz_counts[:10])
+# figure 가 윈도우 창 생성, figsize 옵션으로 크기 설정
+plt.figure(figsize=(10, 4))
+subset = tz_counts[:10]
+# seaborn.barplot() # 메소드로 plt.figure 에 막대 그래프를 그림
+# y 축은 subset.index 로 대륙/도시 이고, x 축은 count 한 개수
+sns.barplot(y=subset.index, x=subset.values)
+# 창을 생성함
 plt.show()
-
-
-
-
-
-
-
