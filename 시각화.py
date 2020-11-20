@@ -569,67 +569,115 @@ import sys
 #
 # l = data['food'].str.lower()
 # print(l)
-
-
-
+#
+#
+#
 #############################
+#
+# import json
+# import numpy as np
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# from collections import defaultdict, Counter
+# import seaborn as sns
+# usa_path = 'usa.txt'
+# records = [json.loads(line) for line in open(usa_path, encoding='UTF8')]
+# # records 는 list 타입이고, 원소들은 dict 타입
+# # print(records)
+# # 'tz' key 값이고 (timezone), 'tz' 가 있는 경우 그 값을 list 에 추가
+# # time_zones 는 records 의 모든 dict 에서 'tz' key 에 해당하는 value 를 모아둔 list
+# time_zones = [rec['tz'] for rec in records if 'tz' in rec]
+# # print(time_zones)
+# # time_zones 의 대륙/도시 명을 key 값으로 하고 개수를 그 value 로 한 defaultdict 를 반환
+# def get_counts(sequence):  #
+#     counts = defaultdict(int)  # values will initialize to 0
+#     for x in sequence:
+#         counts[x] += 1
+#     return counts
+# # counts 는 key 값이 대륙/도시, value 가 갯수(count) , time_zones 에서 개수를 셈
+# # get_counts 함수에 time_zones 를 인수로 넣어서 중복되는 갯수를 count 하여 defaultdict 을 counts 에 저장
+# counts = get_counts(time_zones)
+# # print(counts['America/New_York'])
+# # print(len(time_zones))
+# # 가장 많이 등장하는 상위 10개의 표준 시간대 list 를 리턴하는 함수
+# def top_counts(count_dict, n=10):
+#     value_key_pairs = [(count, tz) for tz, count in count_dict.items()]
+#     # sort() 는 default 가 오름차순 정렬, 내림차순 정렬은 reverse=True 옵션으로 설정
+#     value_key_pairs.sort(reverse=True)
+#     return value_key_pairs[:n]
+# # 대륙/도시 별 count 한 counts 를 인수로 받고 count 수가 많은 순서대로 출력
+# # print(top_counts(counts))
+# # 위 top_counts 기능을 defaultdict 에서 메소드 지원
+# # defaultdict.most_common(x)  상위 x 만큼 출력
+# counts = Counter(time_zones)
+# # for i in counts.most_common(10):
+# #     print(i)
+# frame = pd.DataFrame(records)
+# # frame 정보 출력
+# # print(frame.info())
+# # 'tz' co; 의 상위 10개를 출력
+# # print(frame['tz'][:10])
+# # 'tz' col 에 중복되는 값을 세어줌
+# # print(frame['tz'].value_counts())
+# # 먼저 col 의 값 중에서 '' 인 것을 'Unkown' 으로 바꾼 후
+# clean_tz = frame['tz'].fillna('*Missing*')
+# clean_tz[clean_tz == ''] = '*Unknown*'
+# # 바꾼 후 .value_counts() 'tz' col 에 중복되는 값을 셈
+# tz_counts = clean_tz.value_counts()
+# print(tz_counts[:10])
+# # figure 가 윈도우 창 생성, figsize 옵션으로 크기 설정
+# plt.figure(figsize=(10, 4))
+# subset = tz_counts[:10]
+# # seaborn.barplot() # 메소드로 plt.figure 에 막대 그래프를 그림
+# # y 축은 subset.index 로 대륙/도시 이고, x 축은 count 한 개수
+# sns.barplot(y=subset.index, x=subset.values)
+# # 창을 생성함
+# plt.show()
+#
+#
+#
+# data = pd.DataFrame(np.arange(6).reshape((2, 3)),
+#                    index=pd.Index(['Ohio', 'Colorado'], name='state'),
+#                    columns=pd.Index(['one', 'two', 'three'], name='number'))
+# print(data)
+# result = data.stack()  # 스택으로 로우로 피벗하여 시리즈 출력
+# print(result)
+# print(result.unstack())   # 언스택으로 다시 데이터프레임으로 피벗
+#
+#
+#
+#
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax2 = fig.add_subplot(2,2,2)
+ax3 = fig.add_subplot(2,2,3)
 
-import json
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from collections import defaultdict, Counter
-import seaborn as sns
-usa_path = 'usa.txt'
-records = [json.loads(line) for line in open(usa_path, encoding='UTF8')]
-# records 는 list 타입이고, 원소들은 dict 타입
-# print(records)
-# 'tz' key 값이고 (timezone), 'tz' 가 있는 경우 그 값을 list 에 추가
-# time_zones 는 records 의 모든 dict 에서 'tz' key 에 해당하는 value 를 모아둔 list
-time_zones = [rec['tz'] for rec in records if 'tz' in rec]
-# print(time_zones)
-# time_zones 의 대륙/도시 명을 key 값으로 하고 개수를 그 value 로 한 defaultdict 를 반환
-def get_counts(sequence):  #
-    counts = defaultdict(int)  # values will initialize to 0
-    for x in sequence:
-        counts[x] += 1
-    return counts
-# counts 는 key 값이 대륙/도시, value 가 갯수(count) , time_zones 에서 개수를 셈
-# get_counts 함수에 time_zones 를 인수로 넣어서 중복되는 갯수를 count 하여 defaultdict 을 counts 에 저장
-counts = get_counts(time_zones)
-# print(counts['America/New_York'])
-# print(len(time_zones))
-# 가장 많이 등장하는 상위 10개의 표준 시간대 list 를 리턴하는 함수
-def top_counts(count_dict, n=10):
-    value_key_pairs = [(count, tz) for tz, count in count_dict.items()]
-    # sort() 는 default 가 오름차순 정렬, 내림차순 정렬은 reverse=True 옵션으로 설정
-    value_key_pairs.sort(reverse=True)
-    return value_key_pairs[:n]
-# 대륙/도시 별 count 한 counts 를 인수로 받고 count 수가 많은 순서대로 출력
-# print(top_counts(counts))
-# 위 top_counts 기능을 defaultdict 에서 메소드 지원
-# defaultdict.most_common(x)  상위 x 만큼 출력
-counts = Counter(time_zones)
-# for i in counts.most_common(10):
-#     print(i)
-frame = pd.DataFrame(records)
-# frame 정보 출력
-# print(frame.info())
-# 'tz' co; 의 상위 10개를 출력
-# print(frame['tz'][:10])
-# 'tz' col 에 중복되는 값을 세어줌
-# print(frame['tz'].value_counts())
-# 먼저 col 의 값 중에서 '' 인 것을 'Unkown' 으로 바꾼 후
-clean_tz = frame['tz'].fillna('*Missing*')
-clean_tz[clean_tz == ''] = '*Unknown*'
-# 바꾼 후 .value_counts() 'tz' col 에 중복되는 값을 셈
-tz_counts = clean_tz.value_counts()
-print(tz_counts[:10])
-# figure 가 윈도우 창 생성, figsize 옵션으로 크기 설정
-plt.figure(figsize=(10, 4))
-subset = tz_counts[:10]
-# seaborn.barplot() # 메소드로 plt.figure 에 막대 그래프를 그림
-# y 축은 subset.index 로 대륙/도시 이고, x 축은 count 한 개수
-sns.barplot(y=subset.index, x=subset.values)
-# 창을 생성함
+plt.plot(np.random.randn(50).cumsum(), 'k--')   # 검정색 점선 그래프
+_ = ax1.hist(np.random.randn(100), bins=20, color='k', alpha=0.3)   # 검정색 히스토그램
+ax2.scatter(np.arange(30), np.arange(30) + 3 * np.random.randn(30))   # 산점도
+
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
