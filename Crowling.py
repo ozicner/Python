@@ -10,20 +10,21 @@ from datetime import datetime
 
 try:
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('headless')  # headless : 창을 띄우지 않는
-    chrome_options.add_argument('window-size=1920x1080')  #
-    chrome_options.add_argument('disable-gpu')
-    chrome_options.add_argument('lang=ko_KR')
+    # chrome_options.add_argument('headless')  # headless : 창을 띄우지 않는
+    # chrome_options.add_argument('window-size=1920x1080')  # 크롬 창 설정, 일반적 해상도로
+    # chrome_options.add_argument('disable-gpu')  # CPU 부담 줄이고 빠른 화면 렌더링을 위해
+    # chrome_options.add_argument('lang=ko_KR')  # 한국어 가독 설정
     # 위 크롬 옵션 '헤드리스~랭코'까지 주석 잡으면 실행과정 실시간 확인 가능
 
     # 백그라운드에서 크롬창 실행
+    # 크롬 드라이버란 크롬 버전이 올라감에 따라 크롬 조작을 맞춰서 도와줌
     driver = webdriver.Chrome('chromedriver.exe', options=chrome_options)
 
     # 다음 주소로 이동
     driver.get('https://map.naver.com/v5/search/강남역%20맛집?c=14140183.7974172,4508743.2143150,15,0,0,0,dh')
     delay = 3
     driver.implicitly_wait(delay)
-    driver.get_screenshot_as_file('s0.png')
+    # driver.get_screenshot_as_file('s0.png')
 
     # print(driver.page_source)   # html 소스 보기
 
@@ -42,7 +43,7 @@ try:
         time.sleep(1)
 
     # test 하기 위해 스크롤을 전부 내린 후 스샷으로 저장
-    driver.get_screenshot_as_file('s3.png')
+    # driver.get_screenshot_as_file('s3.png')
 
     # [@class="Tx7az" "_36o75 _3jJcF"]
     # 식당 클릭
@@ -64,10 +65,12 @@ try:
 
         # 크롤링 소스 ~~
 
+
+
         # 크롤링 소스
 
         # test 하기 위해 상호를 클릭할 때마다 스샷을 찍어 저장함
-        driver.get_screenshot_as_file(str(idx) + '.png')
+        # driver.get_screenshot_as_file(str(idx) + '.png')
         # ******** 여기서 부터 html
 
     driver.quit()
